@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
 
-:root{
+:root {
     --softOrange: hsl(35, 77%, 62%);
     --softRed: hsl(5, 85%, 63%);
     --offWhite: hsl(36, 100%, 99%);
@@ -9,7 +9,7 @@
     --veryDarkBlue: hsl(240, 100%, 5%);
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
@@ -31,7 +31,7 @@ img {
     width: 100%;
 }
 
-p{
+p {
     line-height: 1.8;
     color: var(--darkGrayishBlue);
 }
@@ -40,33 +40,82 @@ ul {
     list-style-type: none;
 }
 
+/* mobile design */
+
 /* header */
 
 .header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1.5rem;
+    justify-content: space-between;
+    padding: 1.25rem;
 }
 
-.nav-items li {
-    display: none;
+.header nav #menu-close {
+    background: transparent;
+    border: none;
+    outline: none;
+    position: absolute;
+    right: 1.25rem;
+    top: 1.25rem;
+    z-index: 99999;
+    cursor: pointer;
 }
 
-/* mobile design */
+.header nav {
+    opacity: 0;
+    z-index: -999;
+    transition: all 0.3s ease-in-out;
+}
+
+.header nav.open {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 75vw;
+    background-color: white;
+    padding: 1.25rem;
+    opacity: 1;
+    z-index: 99999999999;
+}
+
+.header nav ul {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.header nav ul li {
+    margin: 1.5rem 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.header nav ul li:hover {
+    color: var(--softOrange);
+}
+
+.header .menu-button button {
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
 
 /* showcase */
 
-.showcase{
+.showcase {
     padding-top: 0;
     padding: 1.25rem;
-} 
+}
 
 .showcase h1 {
-     font-size: 2rem;
-     font-weight: 800;
-     color: var(--veryDarkBlue);
-     margin: 1rem 0;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--veryDarkBlue);
+    margin: 1rem 0;
 }
 
 .showcase h2 {
@@ -77,7 +126,7 @@ ul {
     margin-bottom: 1rem;
 }
 
-.showcase button{
+.showcase button {
     background-color: var(--softRed);
     color: var(--offWhite);
     padding: 0.8rem 2rem;
@@ -91,35 +140,35 @@ ul {
     transform: all 0.3s ease-in-out;
 }
 
-.showcase button:hover{
+.showcase button:hover {
     background-color: var(--veryDarkBlue);
 }
 
-.showcase > div:last-child {
+.showcase>div:last-child {
     background-color: var(--veryDarkBlue);
     margin-top: 2rem;
     padding: 1.25rem 1.25rem 0;
 }
 
-.showcase > div:last-child article {
+.showcase>div:last-child article {
     padding: 1.25rem 0;
 }
 
-.showcase > div:last-child article:not(:last-child){
+.showcase>div:last-child article:not(:last-child) {
     border-bottom: 1px solid var(--darkGrayishBlue);
 }
 
-.showcase > div:last-child h1 {
+.showcase>div:last-child h1 {
     margin-bottom: 1rem;
     color: var(--softOrange);
 }
 
-.showcase > div:last-child h3{
+.showcase>div:last-child h3 {
     margin-bottom: 0.5rem;
     color: var(--offWhite);
 }
 
-.showcase > div:last-child h3:hover{
+.showcase>div:last-child h3:hover {
     color: var(--softOrange);
     cursor: pointer;
 }
@@ -133,14 +182,14 @@ ul {
     gap: 2rem;
 }
 
-.cards article{
+.cards article {
     display: flex;
     align-items: center;
     gap: 1.25rem
 }
 
 .cards article img {
-    width : 9.3rem;
+    width: 9.3rem;
 }
 
 .cards article span {
@@ -150,7 +199,7 @@ ul {
     opacity: 75%;
 }
 
-.cards article  h4 {
+.cards article h4 {
     font-size: 1.25rem;
     color: var(--veryDarkBlue);
     margin: 1rem 0;
@@ -160,30 +209,76 @@ ul {
 
 @media screen and (min-width: 1024px) {
 
+    .header {
+        padding: 2rem 1.25rem;
+    }
+
+    .header nav {
+        opacity: 1;
+        z-index: auto;
+        width: 100%;
+    }
+
+    .header nav.open {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: auto;
+        background-color: transparent;
+        padding: 0;
+        z-index: auto;
+    }
+
+    .header nav #menu-close {
+        display: none;
+    }
+
+    .header nav ul {
+        position: relative;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 2rem;
+        transform: translateY(0%);
+    }
+
+    .header nav ul li {
+        margin: 0;
+    }
+
+    .header .menu-button button {
+        display: none;
+    }
+
+    #menu-button {
+        display: none;
+    }
+
     .showcase {
         display: flex;
         gap: 2rem;
-      }
-    
-      .showcase h1 {
+    }
+
+    .showcase h1 {
         font-size: 3rem;
-      }
-    
-      .showcase > div:first-child article {
+    }
+
+    .showcase>div:first-child article {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
         place-items: center;
         margin-top: 2rem;
-      }
-    
-      .showcase > div:last-child {
-        margin-top: 0;
-      }
+    }
 
-      .cards {
+    .showcase>div:last-child {
+        margin-top: 0;
+    }
+
+    .cards {
         grid-template-columns: repeat(3, 1fr);
         margin-top: 3rem;
-      }
-    
+    }
+
 }
